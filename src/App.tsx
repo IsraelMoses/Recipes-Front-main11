@@ -1,35 +1,209 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./global.css";
+import "./queries.css";
+import "./Components/shareTrip/Share.css";
+import { useEffect, useState } from "react";
+import MainPage from "./Components/mainPage/MainPage";
+import Search from "./Components/searchTrip/Search";
+import Share from "./Components/shareTrip/Shere";
+import Login from "./Components/Form/Login";
+import Register from "./Components/Form/Register";
+import MyTrips from "./Components/myTrips/MyTrips";
+import UpdateTrip from "./Components/myTrips/UpdateTrip";
+import PersonalArea from "./Components/header/PersonalArea";
+import { refreshAccessToken } from "./services/apiClient";
+import tripsService from "./services/tripsService";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState("mainPage");
+  const [isUserConnected, setIsUserConnected] = useState(false);
+  const [tripId, setTripId] = useState("");
+  const imgUrl = localStorage.getItem("imgUrl") || "";
+  const userName = localStorage.getItem("userName") || "";
+
+  const goToSearch = () => setCurrentPage("search");
+  const goToShare = () => {
+    setCurrentPage(isUserConnected ? "share" : "login");
+  };
+  const goToMainPage = () => {
+    setCurrentPage("mainPage");
+  };
+  const goToPersonalArea = () => {
+    setCurrentPage("personalArea");
+  };
+  const goToMyTrips = () => {
+    setCurrentPage("myTrips");
+  };
+  const goToLogin = () => {
+    setCurrentPage("login");
+  };
+  const goToRegister = () => {
+    setCurrentPage("register");
+  };
+  const goToUpdateTrip = (tripId: string) => {
+    setCurrentPage("updateTrip");
+    setTripId(tripId);
+  };
+
+  const onClickClose = () => {
+    goToMainPage();
+  };
+
+  const handleLogin = (isConnected: boolean) => {
+    setIsUserConnected(isConnected);
+    goToMainPage();
+  };
+
+  const onClickRegisterInLoginPage = () => {
+    setCurrentPage("register");
+  };
+
+  const endaleLogOut = async () => {
+    try {
+      const response = await tripsService.logout();
+      setIsUserConnected(false);
+      goToMainPage();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (refreshToken) {
+        try {
+          await refreshAccessToken();
+          setIsUserConnected(true);
+          goToMainPage();
+        } catch (error) {
+          console.error("Failed to refresh token:", error);
+        }
+      } else {
+        setIsUserConnected(false);
+        goToMainPage();
+      }
+    };
+    checkAuthStatus();
+  }, []);
+
+  let displayedPage;
+  switch (currentPage) {
+    case "search":
+      displayedPage = (
+        <Search
+          goToPersonalArea={goToPersonalArea}
+          userName={userName}
+          imgUrl={imgUrl}
+          endaleLogOut={endaleLogOut}
+          isUserConnected={isUserConnected}
+          goToMainPage={goToMainPage}
+          goToShare={goToShare}
+          goToMyTrips={goToMyTrips}
+          goToSearch={goToSearch}
+          goToLogin={goToLogin}
+          goToRegister={goToRegister}
+        />
+      );
+      break;
+    case "share":
+      displayedPage = (
+        <Share
+          goToPersonalArea={goToPersonalArea}
+          userName={userName}
+          imgUrl={imgUrl}
+          endaleLogOut={endaleLogOut}
+          isUserConnected={isUserConnected}
+          goToMainPage={goToMainPage}
+          goToShare={goToShare}
+          goToSearch={goToSearch}
+          goToMyTrips={goToMyTrips}
+          goToLogin={goToLogin}
+          goToRegister={goToRegister}
+        />
+      );
+      break;
+    case "login":
+      displayedPage = (
+        <Login
+          onClickClose={onClickClose}
+          onLogin={handleLogin}
+          onClickRegister={onClickRegisterInLoginPage}
+        />
+      );
+      break;
+    case "personalArea":
+      displayedPage = (
+        <PersonalArea goToMainPage={goToMainPage} imgUrl={imgUrl} />
+      );
+      break;
+    case "myTrips":
+      displayedPage = (
+        <MyTrips
+          goToPersonalArea={goToPersonalArea}
+          goToUpdateTrip={goToUpdateTrip}
+          isUserConnected={isUserConnected}
+          userName={userName}
+          imgUrl={imgUrl}
+          endaleLogOut={endaleLogOut}
+          goToMainPage={goToMainPage}
+          goToShare={goToShare}
+          goToMyTrips={goToMyTrips}
+          goToSearch={goToSearch}
+          goToLogin={goToLogin}
+          goToRegister={goToRegister}
+        />
+      );
+      break;
+    case "updateTrip":
+      displayedPage = (
+        <UpdateTrip
+          goToPersonalArea={goToPersonalArea}
+          tripId={tripId}
+          isUserConnected={isUserConnected}
+          userName={userName}
+          imgUrl={imgUrl}
+          endaleLogOut={endaleLogOut}
+          goToMainPage={goToMainPage}
+          goToShare={goToShare}
+          goToMyTrips={goToMyTrips}
+          goToSearch={goToSearch}
+          goToLogin={goToLogin}
+          goToRegister={goToRegister}
+        />
+      );
+      break;
+    case "register":
+      displayedPage = (
+        <Register
+          goToLogin={goToLogin}
+          onClickClose={onClickClose}
+          onLogin={handleLogin}
+        />
+      );
+      break;
+    default:
+      displayedPage = (
+        <MainPage
+          goToPersonalArea={goToPersonalArea}
+          userName={userName}
+          imgUrl={imgUrl}
+          endaleLogOut={endaleLogOut}
+          goToRegister={goToRegister}
+          goToLogin={goToLogin}
+          goToMyTrips={goToMyTrips}
+          goToSearch={goToSearch}
+          goToShare={goToShare}
+          isUserConnected={isUserConnected}
+        />
+      );
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="background"></div>
+      <div>{displayedPage}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

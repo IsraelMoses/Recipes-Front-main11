@@ -1,0 +1,225 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  overflow-x: hidden;
+  height: 100vh;
+}
+main {
+  max-height: 100vh;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/imgs/newblack.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  z-index: -1;
+}
+
+.hero-section {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin: auto 5rem;
+}
+
+.container {
+  position: relative;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  justify-self: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 1.6rem;
+  border-radius: 2.4rem;
+  font-weight: 600;
+  color: #fff;
+  border: 0;
+  box-shadow: 0px 0.1px 1px 2px #6fe31d;
+  background: none;
+  will-change: backdrop-filter;
+  backdrop-filter: blur(1rem);
+  transition: all 0.3s;
+  animation: fadeIn 1s ease-out;
+}
+
+.btn:hover {
+  filter: blur(-5rem);
+  box-shadow: 0px 0.1px 1px 3px #48527a;
+}
+
+.search-input-btn {
+  width: 25rem;
+  height: 5rem;
+  border-radius: 9px;
+  color: #fff;
+  background: none;
+  padding-left: 1rem;
+}
+
+.search-input-btn::placeholder {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.search-input-box {
+  position: relative;
+}
+
+.search-button-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.7rem;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.search-icon {
+  height: 3rem;
+  width: 3rem;
+  fill: #6fe31d;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  padding: 3px;
+  height: 4rem;
+  width: 4rem;
+  fill: #ebe9f9;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0.1px 1px 3px #6fe31d;
+  background: none;
+  backdrop-filter: blur(1rem);
+  transition: all 0.3s;
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.arrow-icon:hover {
+  filter: blur(-5rem);
+  box-shadow: 0px 0.1px 1px 3px #48527a;
+}
+
+.left-arrow-icon {
+  position: absolute;
+  left: -7rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-rrow-icon {
+  position: absolute;
+  right: -7rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.edit-icon {
+  height: 2rem;
+  width: 2rem;
+}
+.arrows-section {
+  position: absolute;
+  bottom: 1.8rem;
+  right: 72.5%;
+  display: flex;
+  gap: 4rem;
+}
+
+.dim-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.913);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.input-box {
+  position: relative;
+}
+
+.text-danger {
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  color: red;
+  font-size: 1.2rem;
+  text-align: start;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(80%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(80%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
