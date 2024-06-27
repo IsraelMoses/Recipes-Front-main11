@@ -1,0 +1,353 @@
+.share-title {
+  grid-column: 1/-1;
+  font-size: 2.6rem;
+  color: #fff;
+}
+
+.type-trip-title {
+  width: 100%;
+  grid-column: 1/-1;
+  font-size: 2.6rem;
+  color: #fff;
+}
+
+.types-buttons-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  justify-self: center;
+}
+
+/***************************
+TYPE-TRAVELERS SECTION
+****************************/
+
+.types-travelers-buttons {
+  display: inline;
+  font-size: 3.6rem;
+  color: #fff;
+  font-weight: 600;
+  width: 18rem;
+  grid-column: 1/2;
+  grid-row: 1;
+  color: #e6e7f6;
+}
+
+/***************************
+TRIP-LOCATION SECTION
+****************************/
+
+.trip-location-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-left: 3rem;
+}
+
+.numOfDays-country-box {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+}
+
+.selection-box {
+  outline: none;
+  font-size: 2rem;
+  padding: 1.6rem;
+  border-radius: 9px;
+  background: none;
+  color: #fff;
+  backdrop-filter: blur(0.5rem);
+  animation: fadeIn 1s ease-out;
+  width: 100%;
+}
+
+.save-location {
+  width: 14rem;
+  font-size: 2.2rem;
+  margin-top: 6rem;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+.country-list {
+  max-height: 8rem;
+  overflow-y: auto;
+  border-top: none;
+  width: 80%;
+  font-size: 1.6rem;
+  padding: 1.2rem;
+  border: none;
+  color: #fff;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.country-list::-webkit-scrollbar {
+  display: none;
+}
+
+.country-list div {
+  padding: 1.2rem;
+  cursor: pointer;
+  border-radius: 7px;
+  overflow-y: auto;
+}
+
+.country-list div:hover {
+  backdrop-filter: blur(1rem);
+}
+
+.selection-box::placeholder {
+  font-size: 2rem;
+  color: #fff;
+  opacity: 1;
+}
+
+.selected {
+  backdrop-filter: blur(1rem);
+  cursor: pointer; /* מראה למשתמש שהוא יכול ללחוץ על האופציה */
+}
+
+/***************************
+ DESCRIPTION SECTION
+****************************/
+
+.description-box {
+  resize: none;
+  outline: none;
+  grid-column: 1/-1;
+  font-size: 1.6rem;
+  padding: 1.6rem;
+  height: 20rem;
+  border-radius: 7px;
+  background: none;
+  color: #fff;
+  backdrop-filter: blur(1rem);
+  animation: fadeIn 1s ease-out;
+  font-family: "Rubik", sans-serif;
+}
+
+.description-box::placeholder {
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: start;
+  vertical-align: top;
+  opacity: 1;
+  font-family: "Rubik", sans-serif;
+}
+
+.change-day-description-block {
+  position: absolute;
+  bottom: -2.8rem;
+  left: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.change-day-button {
+  color: #0f3d03;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  /* border: 1px solid #e6e7f6; */
+  border-radius: 5px;
+  padding: 5px 15px;
+  background-color: #6fe31d;
+  transition: all 0.3s;
+  animation: fadeIn 1s ease-out;
+}
+
+.change-day-button:hover {
+  background-color: #6e8efb;
+  color: #e6e7f6;
+}
+
+.icons-description-box {
+  position: absolute;
+  bottom: 4px;
+  right: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: end;
+  margin-top: 5px;
+  animation: slideInFromLeft 1.2s ease-out forwards;
+}
+
+.icons-descripton-trip {
+  height: 3rem;
+  width: 3rem;
+  fill: #6fe31d;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.icons-descripton-trip:hover {
+  fill: #6e8efb;
+}
+
+.icon-menu-descripton-trip {
+  height: 4rem;
+  width: 4rem;
+  fill: #6fe31d;
+  cursor: pointer;
+}
+/* .aaa {
+  position: relative;
+} */
+
+/***************************
+ SUCCESSFUL-MESSAGE SECTION
+****************************/
+
+.successful-message {
+  position: relative;
+  display: inline-block;
+  grid-column: 1/-1;
+  text-align: center;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-out;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.successful-message > h1 {
+  margin-bottom: 1rem;
+  font-size: 5rem;
+  color: #6fe31d;
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.successful-message > h2 {
+  font-size: 3rem;
+  color: #fff;
+  animation: slideInFromRight 1s ease-out;
+}
+
+.successful-message p {
+  color: #2c5b0c;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.btn-homepage {
+  background-color: #0f3d03;
+  box-shadow: none;
+}
+
+.btn-homepage:hover {
+  background-color: #6fe31d;
+  box-shadow: none;
+}
+
+.successful-message .btn {
+  width: 20rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 27em) {
+  .buttons-container {
+    gap: 10rem;
+  }
+  .arrow-to-main .left-arrow-icon {
+    left: -3.6rem;
+  }
+  .successful-message {
+    padding: 1rem;
+  }
+
+  .successful-message > h1 {
+    font-size: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .successful-message > h2 {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  .successful-message p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 24em) {
+  .type-trip-title {
+    font-size: 2rem;
+  }
+
+  .selection-box::placeholder {
+    font-size: 1.6rem;
+  }
+
+  .country-list {
+    max-height: 8rem;
+    width: 80%;
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+
+  .country-list div {
+    padding: 1rem;
+  }
+
+  arrow-icon {
+    height: 3rem;
+    width: 3rem;
+  }
+  .left-arrow-icon {
+    left: -5.7rem;
+  }
+  .right-rrow-icon {
+    right: -5.7rem;
+  }
+
+  .successful-message > h1 {
+    font-size: 2.4rem;
+  }
+}

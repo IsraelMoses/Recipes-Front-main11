@@ -1,0 +1,499 @@
+/*******************************
+/ MAIN SEARCH SECTION
+*******************************/
+.main-search-section {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-top: 9.6rem;
+}
+
+.search-btns-section {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.search-btns-section > * {
+  display: inline-block;
+  margin-right: 11rem; /* ייתכן ותרצה לשנות את המרווח בין התיבות */
+}
+
+
+.trip-list-item {
+  grid-column: 1/2;
+  margin-top: 2rem;
+}
+
+/*******************************
+/ 
+ INPUT
+*******************************/
+
+.search-btns-box {
+  position: absolute;
+  top: 50%;
+  right: 8rem;
+  transform: translateY(-30%);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.search-input {
+  padding: 1rem 2rem;
+  border-radius: 7px;
+  font-size: 1.4rem;
+  background: none;
+  color: #fff;
+  resize: none;
+  outline: none;
+  box-shadow: 0.5px 0.5px 0.5px 1px #a5c3e0f7;
+  border: none;
+}
+
+.search-input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.arrow-to-main {
+  position: absolute;
+  top: 50%;
+  left: 7.5%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/*******************************
+/ TRIP CARD
+*******************************/
+.trip-card {
+  position: relative;
+  width: 72%;
+  margin: 0 9.6rem 8rem 9.6rem;
+}
+
+.trip-card-details {
+  position: relative;
+  height: 20rem;
+  width: 100%;
+  border-radius: 7px;
+  will-change: backdrop-filter;
+  backdrop-filter: blur(1rem);
+  box-shadow: 0.1px 2px 5px 0.01px rgba(185, 186, 187, 0.76);
+  z-index: 1;
+  overflow-y: auto;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.trip-card-details::-webkit-scrollbar {
+  display: none;
+}
+
+.trip-day-details {
+  padding: 1.2rem;
+  margin-bottom: 3px;
+}
+
+.trip-day-title {
+  display: inline-block;
+  color: #6fe31d;
+  font-size: 2rem;
+  margin: 2rem 1.6rem 1.2rem 1.6rem;
+  font-weight: 600;
+}
+
+.trip-day-description {
+  padding: 0 1.6rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.trip-card-tags {
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  display: flex;
+  max-width: 70%;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.tag {
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  background-color: #48527a;
+}
+
+/*******************************
+/ PROFILE PICTURE
+*******************************/
+.trip-card-profile {
+  position: absolute;
+  top: -6.5rem;
+  left: 0;
+  display: flex;
+  align-items: end;
+  gap: 0.1px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.profile-name {
+  color: #d2dafa;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.profile-picture {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: 2px solid #48527a;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*******************************
+/ LIKE AND COMMENTS
+*******************************/
+.trip-interactions {
+  z-index: 2;
+  position: absolute;
+  bottom: -14px;
+  right: 1.5rem;
+  display: flex;
+  gap: 9px;
+  animation: slideInFromLeft 1.2s ease-out forwards;
+}
+
+.like-section,
+.comments-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.likes-count,
+.comments-count {
+  display: inline-block;
+  position: absolute;
+  top: -5.9px;
+  right: -6.4px;
+  color: #0f3d03;
+  background-color: #ffffff;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 2px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.comments-icon,
+.like-icon {
+  height: 4rem;
+  width: 4rem;
+  fill: #0b1703;
+  background-color: #6fe31d;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+}
+
+/*******************************
+/ EXPANDED-TRIP SECTION
+*******************************/
+.trip-details-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1/-1;
+  height: auto;
+  margin: 0 8rem;
+  backdrop-filter: blur(1rem);
+  will-change: backdrop-filter;
+  animation: fadeInZoom 1s ease-out forwards;
+}
+
+.trip-details-content {
+  grid-row: 1;
+  grid-column: 1/-1;
+  position: relative;
+  backdrop-filter: blur(1rem);
+  height: auto;
+  border-radius: 7px;
+  z-index: 1;
+  overflow: auto;
+}
+
+.trip-details-content::-webkit-scrollbar {
+  display: none;
+}
+
+.expanded-trip-day-details .trip-day-description {
+  padding: 0 2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.expanded-trip-day-details {
+  padding: 1.2rem;
+  margin-bottom: 3px;
+}
+
+.expanded-comments-section {
+  position: relative;
+  margin: 2rem 8rem;
+  backdrop-filter: blur(1rem);
+  overflow: auto;
+  width: 45%;
+}
+
+.expanded-comments-section::-webkit-scrollbar {
+  display: none;
+}
+
+.comments-input {
+  position: relative;
+  width: 50%;
+}
+
+.comments-input-field {
+  outline: none;
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  height: 5rem;
+  background: none;
+  border-radius: 7px;
+  margin: 3rem 0;
+  color: #ebe9f9;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(1rem);
+  padding: 3px 4rem 3px 1rem;
+  margin-left: 2rem;
+  border: 2.5px solid #6fe31d;
+}
+
+.comments-input-field::placeholder {
+  color: #6fe31d;
+}
+
+.submit-icon-box {
+  position: absolute;
+  top: 3.6rem;
+  right: -2rem;
+  cursor: pointer;
+}
+
+.trip-comments-list {
+  grid-row: 2;
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+  align-items: stretch;
+  padding: 3rem 2rem 3rem 0;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+.comment-box {
+  width: 100%;
+  backdrop-filter: blur(1rem);
+  overflow-x: clip;
+  z-index: 1;
+}
+
+.comment-box::-webkit-scrollbar {
+  z-index: -1;
+}
+
+.delete-comment {
+  background-color: #48527a;
+  color: #f4f6fe;
+  position: absolute;
+  bottom: -3.2rem;
+  right: 0;
+  border-radius: 5px;
+  padding: 4px;
+  width: 8rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.delete-comment:hover {
+  background-color: #6fe31d;
+  color: #0b1703;
+}
+
+.comment-details {
+  position: absolute;
+  bottom: -1.7rem;
+  left: 0;
+  font-size: 1.2rem;
+  color: #8fa3f3;
+  z-index: 40;
+}
+
+.comment-text {
+  font-size: 1.4rem;
+  color: #ffffff;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: start;
+  border: 1px solid #6fe31d;
+  padding: 1rem 2rem 1rem 0.8rem;
+  border-radius: 7px;
+}
+
+/*******************************
+/ PHOTOS SECTION
+*******************************/
+
+.photos-btn {
+  color: #0b1703;
+  background-color: #6fe31d;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.photos-btn:hover {
+  background-color: #48527a;
+  color: #fff;
+}
+
+.image-gallery {
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 5rem;
+  margin: 1rem auto;
+  backdrop-filter: blur(1rem);
+  animation: slideInFromLeft 1.5s ease-out forwards;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.img-trip {
+  flex: 1 1 30rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+}
+
+.img-trip:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35rem;
+  height: 15rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6e8efb, #5edb0a);
+  color: #fff;
+  border-radius: 9px;
+  padding: 2rem 2rem 0.5rem 2rem;
+}
+
+.pop-up p {
+  font-size: 1.6rem;
+  color: #ebe9f9;
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+.pop-up-buttons {
+  grid-column: 1/-1;
+  justify-self: center;
+  display: flex;
+  gap: 3rem;
+}
+
+.pop-up-buttons button {
+  border: none;
+  background: linear-gradient(135deg, #a777e3, #6e8efb);
+  color: #0f3d03;
+  font-size: 1.6rem;
+  height: 3.5rem;
+  width: 10rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pop-up-buttons button:hover {
+  background: linear-gradient(135deg, #adb9e2, #b793e3);
+  color: #fff;
+}
+
+@media (max-width: 51em) {
+  .search-btns-section {
+    display: none;
+  }
+  .trip-list-item {
+    grid-column: 1/-1;
+  }
+  .trip-card {
+    width: 80%;
+    margin: 0 9.6rem 8rem 9.6rem;
+  }
+  .tag {
+    line-height: 1.2;
+    font-size: 1.2rem;
+    padding: 1rem 1rem;
+  }
+}
+
+@media (max-width: 40em) {
+  .trip-details-modal {
+    grid-template-columns: 1fr;
+  }
+  .comments-input {
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .comments-input-field {
+    width: 94%;
+    margin-left: 0;
+  }
+  .submit-icon-box {
+    position: absolute;
+    right: 4rem;
+  }
+}
+@media (max-width: 27em) {
+  .arrow-to-main .left-arrow-icon {
+    left: -1.9rem;
+  }
+}
